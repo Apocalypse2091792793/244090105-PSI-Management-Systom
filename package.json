@@ -1,0 +1,14 @@
+{
+  "name": "goods-psi-system",
+  "version": "1.0.0",
+  "description": "商品购销存管理系统 (Purchase-Sale-Inventory Management System)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-session": "^1.18.0"
+  }
+}

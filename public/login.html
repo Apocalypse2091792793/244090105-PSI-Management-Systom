@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - 商品购销存管理系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo">📦</div>
+        <h1>商品购销存管理系统</h1>
+        <p>Purchase · Sale · Inventory</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label>用户名</label>
+          <input type="text" id="username" placeholder="请输入用户名" required>
+        </div>
+        <div class="form-group">
+          <label>密码</label>
+          <input type="password" id="password" placeholder="请输入密码" required>
+        </div>
+        <div class="login-error" id="loginError"></div>
+        <button type="submit" class="btn btn-primary btn-block">登 录</button>
+      </form>
+      <div class="login-tips">
+        <p>演示账号：</p>
+        <p>管理员 admin / 123456</p>
+        <p>采购员 purchaser / 123456</p>
+        <p>销售员 sales / 123456</p>
+        <p>仓管员 warehouse / 123456</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errEl = document.getElementById('loginError');
+      errEl.textContent = '';
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (!res.ok) { errEl.textContent = data.error || '登录失败'; return; }
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = '/index.html';
+      } catch (err) {
+        errEl.textContent = '网络错误，请重试';
+      }
+    });
+  </script>
+</body>
+</html>

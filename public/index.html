@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品购销存管理系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">📦 购销存系统</div>
+    <ul class="sidebar-menu" id="sideMenu">
+      <li data-page="dashboard" class="active"><span class="icon">📊</span>仪表盘</li>
+      <li data-page="products"><span class="icon">📦</span>商品管理</li>
+      <li data-page="categories"><span class="icon">🏷️</span>商品分类</li>
+      <li data-page="suppliers"><span class="icon">🚚</span>供应商管理</li>
+      <li data-page="customers"><span class="icon">👥</span>客户管理</li>
+      <li data-page="purchase"><span class="icon">⬇️</span>采购管理</li>
+      <li data-page="sales"><span class="icon">⬆️</span>销售管理</li>
+      <li data-page="inventory"><span class="icon">📋</span>库存查询</li>
+      <li data-page="report"><span class="icon">📈</span>销售报表</li>
+      <li data-page="logs"><span class="icon">📜</span>出入库日志</li>
+    </ul>
+  </aside>
+
+  <!-- 主区域 -->
+  <div class="main">
+    <header class="topbar">
+      <div class="page-title" id="pageTitle">仪表盘</div>
+      <div class="user-info">
+        <span class="role-tag" id="userRole">-</span>
+        <span id="userName">-</span>
+        <span class="logout-btn" id="logoutBtn">退出</span>
+      </div>
+    </header>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<!-- 通用模态框 -->
+<div class="modal-mask" id="modalMask">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <span id="modalTitle">标题</span>
+      <span class="modal-close" id="modalClose">×</span>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
